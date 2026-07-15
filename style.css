@@ -1,0 +1,20 @@
+body {
+    text-aling:center;
+    background: blue
+}
+
+div {
+    background-color: black;
+    color: white
+}
+
+.icons{
+    width:100px;
+}
+.icons:hover{
+    width:110px;
+}
+
+a:hover {
+    color:aliceblue
+}
