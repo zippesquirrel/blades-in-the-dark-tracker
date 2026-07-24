@@ -4,21 +4,22 @@
         <meta charset="UTF-8">
         <title>My Page</title>
         <link rel="stylesheet" href="style.css">
+        
     </head>
     <body>
         <h1>Blades in the Dark Tracker</h1>
         <div>
             <label>name</label><br>
-            <input id="playerName-input" onkeydown="store('playerName',this)"><br>
+            <input id="strPlayerName-input" onkeydown="store('strPlayerName',this)"><br>
             <label>alias</label><br>
-            <input id="playerAlias-input" onkeydown="store('playerAlias',this)"><br>
+            <input id="strPlayerAlias-input" onkeydown="store('strPlayerAlias',this)"><br>
             <label>crew</label><br>
-            <input id="playerCrew-input" onkeydown="store('playerCrew',this)"><br>
+            <input id="strPlayerCrew-input" onkeydown="store('strPlayerCrew',this)"><br>
             <label>look</label><br>
-            <input id="playerLook-input" onkeydown="store('playerLook',this)"><br>
-            <svg class = "diamond">
+            <input id="strPlayerLook-input" onkeydown="store('strPlayerLook',this)"><br>
+            <!-- <svg class = "diamond">
                 <polygon points="0 0,80 20,80 160,0 140"/>
-            </svg>
+            </svg> -->
             <!-- <input type="radio" id="akoros" name="heritage" value="akoros" onclick="store('heritage',akoros)">
             <label for="akoros">Akoros</label>
             <input type="radio" id="dagger" name="heritage" value="dagger" onclick="store('heritage',dagger)">
@@ -26,37 +27,17 @@
             <input type="radio" id="iruvia" name="heritage" value="iruvia" onclick="store('heritage',iruvia)">
             <label for="iruvia">Iruvia</label> -->
         </div>
-        <script>
+        <div class = 'coin-flex'>
+            <h2>Coin Tracker</h2>
+            <div class="coin-tracker">
+                <button class="coin-button" id="coin-1" onclick="buttonUpdate(true)"></button>
+                <button class="coin-button" id="coin-2" onclick="store('intPlayerCoin',2),buttonUpdate()"></button>
+                <button class="coin-button" id="coin-3" onclick="store('intPlayerCoin',3),buttonUpdate()"></button>
+                <button class="coin-button" id="coin-4" onclick="store('intPlayerCoin',4),buttonUpdate()"></button>
 
-            // Source - https://stackoverflow.com/a/37965346
-            // Posted by phreakv6
-            // Retrieved 2026-07-24, License - CC BY-SA 3.0
-
-            // keep the contents of the input in local storage at key, called by input onkeydown
-            function store(key,e) {
-                localStorage.setItem(key, e.value)
-            }
-
-            function testLog(){
-                console.log("test")
-            }
-            // iterate over storage, setting where not null
-            for (let i = 0; i < localStorage.length; i++){
-                let activeKey = localStorage.key(i)
-                let activeValue = localStorage.getItem(activeKey)
-                console.log(activeKey)
-                console.log(activeValue)
-
-                // if previous storage exists, use it
-                if(localStorage.getItem(activeKey) !== null) {
-                    document.getElementById(`${activeKey}-input`).value = localStorage.getItem(activeKey)
-              }
-            }
-
-
-
-        </script>
-
+            </div>           
+        </div>
+        <script src="main.js"></script>
     </body>
 
 </html>
