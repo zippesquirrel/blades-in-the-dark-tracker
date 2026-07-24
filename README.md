@@ -6,8 +6,8 @@ A handy way to keep track of a player character.
 ## ✅ Done
 Nothing yet 😭
 ## ⏰ Planned
-Track player name, stats, playbook levels, harm
-View traits for player class 
-Comfortable to use on mobile
-Custom themes
-Using cookies to sync after page refresh
+- Track player name, stats, playbook levels, harm  
+- View traits for player class  
+- Comfortable to use on mobile  
+- Custom themes  
+- Using cookies to sync after page refresh  
