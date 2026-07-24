@@ -1,6 +1,7 @@
 body {
-    text-aling:center;
-    background: blue
+    text-align:center;
+    background: black;
+    color: white;
 }
 
 div {
@@ -17,4 +18,19 @@ div {
 
 a:hover {
     color:aliceblue
+}
+
+.diamond{
+
+    width:200;
+    height:160px;
+    left:10%;
+    top:10%;
+    fill: black; 
+    stroke:white;
+    stroke-width: 5px;
+}
+
+.diamond:hover{
+    fill:rgb(87, 87, 87)
 }

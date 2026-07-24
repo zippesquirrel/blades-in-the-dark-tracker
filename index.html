@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -5,13 +6,58 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <h1>hullo</h1>
-        <a href="https://stardance.space">Join stardance you goober!</a>
-        <a href="mailto:maxkinsberg@gmail.com">email me twin</a>
-        <img class=icons src="icons.png" alt="a collection of minecraft icons">
-        <p>no way is this a real site on the interweb?</p>
+        <h1>Blades in the Dark Tracker</h1>
         <div>
-            <p>i am john web developer</p>
+            <label>name</label><br>
+            <input id="playerName-input" onkeydown="store('playerName',this)"><br>
+            <label>alias</label><br>
+            <input id="playerAlias-input" onkeydown="store('playerAlias',this)"><br>
+            <label>crew</label><br>
+            <input id="playerCrew-input" onkeydown="store('playerCrew',this)"><br>
+            <label>look</label><br>
+            <input id="playerLook-input" onkeydown="store('playerLook',this)"><br>
+            <svg class = "diamond">
+                <polygon points="0 0,80 20,80 160,0 140"/>
+            </svg>
+            <!-- <input type="radio" id="akoros" name="heritage" value="akoros" onclick="store('heritage',akoros)">
+            <label for="akoros">Akoros</label>
+            <input type="radio" id="dagger" name="heritage" value="dagger" onclick="store('heritage',dagger)">
+            <label for="dagger">The Dagger Isles</label>
+            <input type="radio" id="iruvia" name="heritage" value="iruvia" onclick="store('heritage',iruvia)">
+            <label for="iruvia">Iruvia</label> -->
         </div>
+        <script>
+
+            // Source - https://stackoverflow.com/a/37965346
+            // Posted by phreakv6
+            // Retrieved 2026-07-24, License - CC BY-SA 3.0
+
+            // keep the contents of the input in local storage at key, called by input onkeydown
+            function store(key,e) {
+                localStorage.setItem(key, e.value)
+            }
+
+            function testLog(){
+                console.log("test")
+            }
+            // iterate over storage, setting where not null
+            for (let i = 0; i < localStorage.length; i++){
+                let activeKey = localStorage.key(i)
+                let activeValue = localStorage.getItem(activeKey)
+                console.log(activeKey)
+                console.log(activeValue)
+
+                // if previous storage exists, use it
+                if(localStorage.getItem(activeKey) !== null) {
+                    document.getElementById(`${activeKey}-input`).value = localStorage.getItem(activeKey)
+              }
+            }
+
+
+
+        </script>
+
     </body>
+
 </html>
+
