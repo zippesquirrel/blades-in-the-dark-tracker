@@ -27,15 +27,39 @@
             <input type="radio" id="iruvia" name="heritage" value="iruvia" onclick="store('heritage',iruvia)">
             <label for="iruvia">Iruvia</label> -->
         </div>
-        <div class = 'coin-flex'>
+        <div id = 'coin-flex'>
             <h2>Coin Tracker</h2>
-            <div class="coin-tracker">
-                <button class="coin-button" id="coin-1" onclick="buttonUpdate(true)"></button>
-                <button class="coin-button" id="coin-2" onclick="store('intPlayerCoin',2),buttonUpdate()"></button>
-                <button class="coin-button" id="coin-3" onclick="store('intPlayerCoin',3),buttonUpdate()"></button>
-                <button class="coin-button" id="coin-4" onclick="store('intPlayerCoin',4),buttonUpdate()"></button>
-
+            <div id="coin-tracker">
+                <button class="square-button inactive" id="coin-1" onclick="buttonUpdate('intPlayerCoin',coinArray,1)"></button>
+                <button class="square-button inactive" id="coin-2" onclick="buttonUpdate('intPlayerCoin',coinArray,2)"></button>
+                <button class="square-button inactive" id="coin-3" onclick="buttonUpdate('intPlayerCoin',coinArray,3)"></button>
+                <button class="square-button inactive" id="coin-4" onclick="buttonUpdate('intPlayerCoin',coinArray,4)"></button>
             </div>           
+        </div>
+        <div id = "strauma">
+            <div id = 'stress-flex'>
+                <h2>Stress</h2>
+                <div id="stress-tracker">
+                    <button class="pennant-button inactive" id="stress-1" onclick="buttonUpdate('intPlayerStress',stressArray,1)"></button>
+                    <button class="pennant-button inactive" id="stress-2" onclick="buttonUpdate('intPlayerStress',stressArray,2)"></button>
+                    <button class="pennant-button inactive" id="stress-3" onclick="buttonUpdate('intPlayerStress',stressArray,3)"></button>
+                    <button class="pennant-button inactive" id="stress-4" onclick="buttonUpdate('intPlayerStress',stressArray,4)"></button>
+                    <button class="pennant-button inactive" id="stress-5" onclick="buttonUpdate('intPlayerStress',stressArray,5)"></button>
+                    <button class="pennant-button inactive" id="stress-6" onclick="buttonUpdate('intPlayerStress',stressArray,6)"></button>
+                    <button class="pennant-button inactive" id="stress-7" onclick="buttonUpdate('intPlayerStress',stressArray,7)"></button>
+                    <button class="pennant-button inactive" id="stress-8" onclick="buttonUpdate('intPlayerStress',stressArray,8)"></button>
+                    <button class="pennant-button inactive" id="stress-9" onclick="buttonUpdate('intPlayerStress',stressArray,9)"></button>
+                </div>
+            </div>
+            <div id = 'trauma-flex'>
+                <h2>Trauma</h2>
+                <div id="trauma-tracker">
+                    <button class="pennant-button inactive" id="trauma-1" onclick="buttonUpdate('intPlayerTrauma',traumaArray,1)"></button>
+                    <button class="pennant-button inactive" id="trauma-2" onclick="buttonUpdate('intPlayerTrauma',traumaArray,2)"></button>
+                    <button class="pennant-button inactive" id="trauma-3" onclick="buttonUpdate('intPlayerTrauma',traumaArray,3)"></button>
+                    <button class="pennant-button inactive" id="trauma-4" onclick="buttonUpdate('intPlayerTrauma',traumaArray,4)"></button>
+                </div>
+            </div>
         </div>
         <script src="main.js"></script>
     </body>

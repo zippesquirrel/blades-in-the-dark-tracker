@@ -1,5 +1,19 @@
+// gold "#f7d127"
+// white "#ffffff"
+
+const intKeys = ["intPlayerCoin","intPlayerStress","intPlayerTrauma"]
+
+for (i = 0; i< intKeys.length;i++){
+    console.log(intKeys[i]);
+    console.log(i);
+    if (localStorage.getItem(intKeys[i])== null){
+        store(intKeys[i],0)
+    }
+}
+
 // initially borrowed from https://stackoverflow.com/a/37965346
 // keep the contents of the input in local storage at key, called by input onkeydown
+
 function store(key,e) {
     const type = typeof e;
     // if an HTML object, set value to its value
@@ -9,54 +23,78 @@ function store(key,e) {
     } else if (type == "number" || type == "string"){
         localStorage.setItem(key, e);
     };
-    
 };
 
-function buttonUpdate(first){
+function createButtonArray(id,count){
+    let buttonArray = new Array;
+    for (i=1;i<=count;i++){
+        buttonArray.push(document.getElementById(`${id}-${i}`));
+    };
+    return buttonArray;
+};
 
-    let coinInt = localStorage.getItem("intPlayerCoin");
-    const coin1 = document.getElementById("coin-1");
-    const coin2 = document.getElementById("coin-2");
-    const coin3 = document.getElementById("coin-3");
-    const coin4 = document.getElementById("coin-4");
-    const coinArray = [coin1,coin2,coin3,coin4]
+function buttonDisplay(objectArray,int){
+    if (int!== 0){
+        for (i=0;i<int;i++){
+            objectArray[i].classList.replace('inactive','active')
+        };
+    };
 
-    if (first){
-        if  (coinInt == 1) {
-        store("intPlayerCoin",0)
-        } 
-        else {
-        store("intPlayerCoin",1)
+    for (i=int;i<=(objectArray.length-1);i++){
+        objectArray[i].classList.replace('active','inactive')
+    };
+}
+;
+function buttonUpdate(key,objectArray, index,primary, secondary){
+
+    let storedInt = localStorage.getItem(key);
+
+    //exception handling
+    if (storedInt==null){
+        console.log(`Key "${key}" has no value!`)
+        return
+    };
+
+    if (index==1){
+        if  (storedInt == 1) {
+        store(key,0);
         }
-    }
-    coinInt = localStorage.getItem("intPlayerCoin")
-    if (coinInt!== 0){
-        for (i=0;i<coinInt;i++){
-        coinArray[i].style.backgroundColor="#f7c41c"
+        else {
+        store(key,1);
+        };
+    } else {
+        store(key,index);
     };
-    }
 
-    // e.style.background-color = "40px";
-    for (i=coinInt;i<=3;i++){
-        coinArray[i].style.backgroundColor="#b3b3b3"
-    };
+    //store new value
+    storedInt = localStorage.getItem(key);
+    
+    // update the appearance of the buttons
+    buttonDisplay(objectArray,storedInt,primary,secondary);
+
 };
-buttonUpdate();
+
 // iterate over storage, setting where not null
 for (let i = 0; i < localStorage.length; i++){
     const reg = /(?:str)/;
     let activeKey = localStorage.key(i);
     let activeValue = localStorage.getItem(activeKey);
-    // console.log(activeKey)
-    // console.log(activeValue)
 
     // if previous storage exists, use it
-    console.log(reg.test(activeKey.toString()));
-    //string input handling
+
+    //string input handling with regex
     if(activeValue !== null && reg.test(activeKey.toString())) {
-        console.log(`${activeKey}-input`);
-        console.log(document.getElementById(`${activeKey}-input`));
         document.getElementById(`${activeKey}-input`).value = localStorage.getItem(activeKey);
     };
 };
+
+//coin intial position
+const coinArray = createButtonArray("coin",4)
+const stressArray = createButtonArray("stress",9)
+const traumaArray = createButtonArray("trauma",4)
+
+buttonDisplay(coinArray,localStorage.getItem("intPlayerCoin"))
+buttonDisplay(stressArray,localStorage.getItem("intPlayerStress"))
+buttonDisplay(traumaArray,localStorage.getItem("intPlayerTrauma"))
+
 

@@ -4,9 +4,11 @@ body {
     color: white;
 }
 
-div {
-    background-color: black;
-    color: white
+#strauma{
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-column-gap: 20px;
+    place-content: center;
 }
 
 .icons{
@@ -35,29 +37,47 @@ a:hover {
     fill:rgb(87, 87, 87)
 }
 
-.coin-flex{
+#coin-flex{
     display:flex;
     align-items: center;
     justify-content: center;
 }
 
-.coin-tracker{
+#coin-tracker{
     place-content: center;
     display: grid;
     grid-template-columns: auto auto;
-    place-content: center;
     width:50px;
     height:50px;
-    border-radius: 7.5px;
-    background-color: white;
+    border-radius: 2px;
         
 }
 
-.coin-button{
-    background-color:#b3b3b3;
-    border-radius:5px;
-    border-color:white;
+.active{
+    background-color: red;
+}
+.active[id^=coin]{
+    background-color: gold;
+}
+
+.inactive{
+    background-color: darkslategray;
+}
+
+[class*=button]{
     border-style:solid;
+    border-color:rgb(107, 75, 75);
+    border-radius:2px;
+}
+
+.square-button{
     width:20px;
     height:20px;
+}
+
+.pennant-button{
+
+    height:40px;
+    width:20px;
+    transform: skewY(-20deg);
 }
