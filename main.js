@@ -1,15 +1,12 @@
-// gold "#f7d127"
-// white "#ffffff"
-
-const intKeys = ["intPlayerCoin","intPlayerStress","intPlayerTrauma"]
+const intKeys = ["intPlayerCoin","intPlayerStress","intPlayerTrauma"];
 
 for (i = 0; i< intKeys.length;i++){
     console.log(intKeys[i]);
     console.log(i);
     if (localStorage.getItem(intKeys[i])== null){
-        store(intKeys[i],0)
-    }
-}
+        store(intKeys[i],0);
+    };
+};
 
 // initially borrowed from https://stackoverflow.com/a/37965346
 // keep the contents of the input in local storage at key, called by input onkeydown
@@ -51,8 +48,8 @@ function buttonUpdate(key,objectArray, index,primary, secondary){
 
     //exception handling
     if (storedInt==null){
-        console.log(`Key "${key}" has no value!`)
-        return
+        console.log(`Key "${key}" has no value!`);
+        return;
     };
 
     if (index==1){
@@ -89,12 +86,12 @@ for (let i = 0; i < localStorage.length; i++){
 };
 
 //coin intial position
-const coinArray = createButtonArray("coin",4)
-const stressArray = createButtonArray("stress",9)
-const traumaArray = createButtonArray("trauma",4)
+const coinArray = createButtonArray("coin",4);
+const stressArray = createButtonArray("stress",9);
+const traumaArray = createButtonArray("trauma",4);
 
-buttonDisplay(coinArray,localStorage.getItem("intPlayerCoin"))
-buttonDisplay(stressArray,localStorage.getItem("intPlayerStress"))
-buttonDisplay(traumaArray,localStorage.getItem("intPlayerTrauma"))
+buttonDisplay(coinArray,localStorage.getItem("intPlayerCoin"));
+buttonDisplay(stressArray,localStorage.getItem("intPlayerStress"));
+buttonDisplay(traumaArray,localStorage.getItem("intPlayerTrauma"));
 
 

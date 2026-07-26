@@ -4,31 +4,23 @@
         <meta charset="UTF-8">
         <title>My Page</title>
         <link rel="stylesheet" href="style.css">
-        
+        <link rel="stylesheet" href="https://use.typekit.net/lcc4aaf.css">
     </head>
     <body>
-        <h1>Blades in the Dark Tracker</h1>
-        <div>
-            <label>name</label><br>
-            <input id="strPlayerName-input" onkeydown="store('strPlayerName',this)"><br>
-            <label>alias</label><br>
-            <input id="strPlayerAlias-input" onkeydown="store('strPlayerAlias',this)"><br>
-            <label>crew</label><br>
-            <input id="strPlayerCrew-input" onkeydown="store('strPlayerCrew',this)"><br>
-            <label>look</label><br>
-            <input id="strPlayerLook-input" onkeydown="store('strPlayerLook',this)"><br>
-            <!-- <svg class = "diamond">
-                <polygon points="0 0,80 20,80 160,0 140"/>
-            </svg> -->
-            <!-- <input type="radio" id="akoros" name="heritage" value="akoros" onclick="store('heritage',akoros)">
-            <label for="akoros">Akoros</label>
-            <input type="radio" id="dagger" name="heritage" value="dagger" onclick="store('heritage',dagger)">
-            <label for="dagger">The Dagger Isles</label>
-            <input type="radio" id="iruvia" name="heritage" value="iruvia" onclick="store('heritage',iruvia)">
-            <label for="iruvia">Iruvia</label> -->
+        <h1>BLADES <span style="font-size:70%":>IN THE</span> DARK</h1>
+        
+        <div id="player-info">
+            <label>name</label>
+            <input class="text-input" id="strPlayerName-input" onkeydown="store('strPlayerName',this)"><br>
+            <label>alias</label>
+            <input class="text-input" id="strPlayerAlias-input" onkeydown="store('strPlayerAlias',this)"><br>
+            <label>crew</label>
+            <input class="text-input" id="strPlayerCrew-input" onkeydown="store('strPlayerCrew',this)"><br>
+            <label>look</label>
+            <input class="text-input" id="strPlayerLook-input" onkeydown="store('strPlayerLook',this)"><br>
         </div>
         <div id = 'coin-flex'>
-            <h2>Coin Tracker</h2>
+            <h2>COIN</h2>
             <div id="coin-tracker">
                 <button class="square-button inactive" id="coin-1" onclick="buttonUpdate('intPlayerCoin',coinArray,1)"></button>
                 <button class="square-button inactive" id="coin-2" onclick="buttonUpdate('intPlayerCoin',coinArray,2)"></button>
@@ -36,9 +28,9 @@
                 <button class="square-button inactive" id="coin-4" onclick="buttonUpdate('intPlayerCoin',coinArray,4)"></button>
             </div>           
         </div>
-        <div id = "strauma">
+        <div id = "trauma-stress">
             <div id = 'stress-flex'>
-                <h2>Stress</h2>
+                <h2>STRESS</h2>
                 <div id="stress-tracker">
                     <button class="pennant-button inactive" id="stress-1" onclick="buttonUpdate('intPlayerStress',stressArray,1)"></button>
                     <button class="pennant-button inactive" id="stress-2" onclick="buttonUpdate('intPlayerStress',stressArray,2)"></button>
@@ -52,7 +44,7 @@
                 </div>
             </div>
             <div id = 'trauma-flex'>
-                <h2>Trauma</h2>
+                <h2>TRAUMA</h2>
                 <div id="trauma-tracker">
                     <button class="pennant-button inactive" id="trauma-1" onclick="buttonUpdate('intPlayerTrauma',traumaArray,1)"></button>
                     <button class="pennant-button inactive" id="trauma-2" onclick="buttonUpdate('intPlayerTrauma',traumaArray,2)"></button>
@@ -61,6 +53,12 @@
                 </div>
             </div>
         </div>
+        <!-- <div id = 'healing-clock'>
+            <button class="healing-button square-button inactive" id="heal-1" onclick="buttonUpdate('intPlayerHeal',healArray,1)"></button>
+            <button class="healing-button square-button inactive" id="heal-2" onclick="buttonUpdate('intPlayerHeal',healArray,2)"></button>
+            <button class="healing-button square-button inactive" id="heal-3" onclick="buttonUpdate('intPlayerHeal',healArray,3)"></button>
+            <button class="healing-button square-button inactive" id="heal-4" onclick="buttonUpdate('intPlayerHeal',healArray,4)"></button>                
+        </div> -->
         <script src="main.js"></script>
     </body>
 
