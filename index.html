@@ -10,46 +10,113 @@
         <h1>BLADES <span style="font-size:70%":>IN THE</span> DARK</h1>
         
         <div id="player-info">
-            <label>name</label>
-            <input class="text-input" id="strPlayerName-input" onkeydown="store('strPlayerName',this)"><br>
-            <label>alias</label>
-            <input class="text-input" id="strPlayerAlias-input" onkeydown="store('strPlayerAlias',this)"><br>
-            <label>crew</label>
-            <input class="text-input" id="strPlayerCrew-input" onkeydown="store('strPlayerCrew',this)"><br>
-            <label>look</label>
-            <input class="text-input" id="strPlayerLook-input" onkeydown="store('strPlayerLook',this)"><br>
+            <div id="string-info">
+                <label>NAME</label>
+                <input class="text-input" id="strPlayerName-input" oninput="store('strPlayerName',this)"><br>
+                <label>ALIAS</label>
+                <input class="text-input" id="strPlayerAlias-input" oninput="store('strPlayerAlias',this)"><br>
+                <label>CREW</label>
+                <input class="text-input" id="strPlayerCrew-input" oninput="store('strPlayerCrew',this)"><br>
+                <label>LOOK</label>
+                <input class="text-input" id="strPlayerLook-input" oninput="store('strPlayerLook',this)"><br>
+            </div>
+            <div id="radio-info">
+                <div class="radio-flex" id="heritage-flex">
+                    <p>Heritage</p>
+                    <!--
+                    Source - https://stackoverflow.com/a/18396306
+                    Posted by Mr Lister
+                    Retrieved 2026-07-28, License - CC BY-SA 3.0
+                    -->
+                    <div class="radiowrapper" id="heritage1">
+                        <input type="radio" name="heritage" value="akaros" id="ak">
+                        <label for="ak">Akaros</label>
+                    </div>
+                    <div class="radiowrapper" id="heritage2">
+                        <input type="radio" name="heritage" value="dagger" id="dg">
+                        <label for="dg">Dagger Isles</label>
+                    </div>
+                    <div class="radiowrapper" id="heritage3">
+                        <input type="radio" name="heritage" value="iruvia" id="ir">
+                        <label for="ir">Iruvia</label>
+                    </div>
+                    <div class="radiowrapper" id="heritage4">
+                        <input type="radio" name="heritage" value="severos" id="sv">
+                        <label for="sv">Severos</label>
+                    </div>
+                    <div class="radiowrapper" id="heritage5">
+                        <input type="radio" name="heritage" value="skovlan" id="sk">
+                        <label for="sk">Skovlan</label>
+                    </div>
+                    <div class="radiowrapper" id="heritage6">
+                        <input type="radio" name="heritage" value="tycheros" id="ty">
+                        <label for="ty">Tycheros</label>
+                    </div>
+                </div>
+                <div class="radio-flex" id="background-flex">
+                    <p>Background</p>
+                    <div class="radiowrapper" id="background1">
+                        <input type="radio" name="background" value="academic" id="ac">
+                        <label for="ac">Academic</label>
+                    </div>
+                    <div class="radiowrapper" id="background2">
+                        <input type="radio" name="background" value="labor" id="lb">
+                        <label for="lb">Labor</label>
+                    </div>
+                    <div class="radiowrapper" id="background3">
+                        <input type="radio" name="background" value="law" id="lw">
+                        <label for="lw">Law</label>
+                    </div>
+                    <div class="radiowrapper" id="background4">
+                        <input type="radio" name="background" value="trade" id="td">
+                        <label for="td">Trade</label>
+                    </div>
+                    <div class="radiowrapper" id="background5">
+                        <input type="radio" name="background" value="military" id="mi">
+                        <label for="mi">Military</label>
+                    </div>
+                    <div class="radiowrapper" id="background6">
+                        <input type="radio" name="background" value="noble" id="no">
+                        <label for="no">Noble</label>
+                    </div>
+                    <div class="radiowrapper" id="background7">
+                        <input type="radio" name="background" value="underworld" id="uw">
+                        <label for="uw">Underworld</label>
+                    </div>
+                </div>
+            </div>
         </div>
         <div id = 'coin-flex'>
             <h2>COIN</h2>
             <div id="coin-tracker">
-                <button class="square-button inactive" id="coin-1" onclick="buttonUpdate('intPlayerCoin',coinArray,1)"></button>
-                <button class="square-button inactive" id="coin-2" onclick="buttonUpdate('intPlayerCoin',coinArray,2)"></button>
-                <button class="square-button inactive" id="coin-3" onclick="buttonUpdate('intPlayerCoin',coinArray,3)"></button>
-                <button class="square-button inactive" id="coin-4" onclick="buttonUpdate('intPlayerCoin',coinArray,4)"></button>
+                <button class="square button inactive" id="coin-1" onclick="buttonUpdate('intPlayerCoin',coinArray,1)"></button>
+                <button class="square button inactive" id="coin-2" onclick="buttonUpdate('intPlayerCoin',coinArray,2)"></button>
+                <button class="square button inactive" id="coin-3" onclick="buttonUpdate('intPlayerCoin',coinArray,3)"></button>
+                <button class="square button inactive" id="coin-4" onclick="buttonUpdate('intPlayerCoin',coinArray,4)"></button>
             </div>           
         </div>
         <div id = "trauma-stress">
             <div id = 'stress-flex'>
                 <h2>STRESS</h2>
                 <div id="stress-tracker">
-                    <button class="pennant-button inactive" id="stress-1" onclick="buttonUpdate('intPlayerStress',stressArray,1)"></button>
-                    <button class="pennant-button inactive" id="stress-2" onclick="buttonUpdate('intPlayerStress',stressArray,2)"></button>
-                    <button class="pennant-button inactive" id="stress-3" onclick="buttonUpdate('intPlayerStress',stressArray,3)"></button>
-                    <button class="pennant-button inactive" id="stress-4" onclick="buttonUpdate('intPlayerStress',stressArray,4)"></button>
-                    <button class="pennant-button inactive" id="stress-5" onclick="buttonUpdate('intPlayerStress',stressArray,5)"></button>
-                    <button class="pennant-button inactive" id="stress-6" onclick="buttonUpdate('intPlayerStress',stressArray,6)"></button>
-                    <button class="pennant-button inactive" id="stress-7" onclick="buttonUpdate('intPlayerStress',stressArray,7)"></button>
-                    <button class="pennant-button inactive" id="stress-8" onclick="buttonUpdate('intPlayerStress',stressArray,8)"></button>
-                    <button class="pennant-button inactive" id="stress-9" onclick="buttonUpdate('intPlayerStress',stressArray,9)"></button>
+                    <button class="slant button inactive" id="stress-1" onclick="buttonUpdate('intPlayerStress',stressArray,1)"></button>
+                    <button class="slant button inactive" id="stress-2" onclick="buttonUpdate('intPlayerStress',stressArray,2)"></button>
+                    <button class="slant button inactive" id="stress-3" onclick="buttonUpdate('intPlayerStress',stressArray,3)"></button>
+                    <button class="slant button inactive" id="stress-4" onclick="buttonUpdate('intPlayerStress',stressArray,4)"></button>
+                    <button class="slant button inactive" id="stress-5" onclick="buttonUpdate('intPlayerStress',stressArray,5)"></button>
+                    <button class="slant button inactive" id="stress-6" onclick="buttonUpdate('intPlayerStress',stressArray,6)"></button>
+                    <button class="slant button inactive" id="stress-7" onclick="buttonUpdate('intPlayerStress',stressArray,7)"></button>
+                    <button class="slant button inactive" id="stress-8" onclick="buttonUpdate('intPlayerStress',stressArray,8)"></button>
+                    <button class="slant button inactive" id="stress-9" onclick="buttonUpdate('intPlayerStress',stressArray,9)"></button>
                 </div>
             </div>
             <div id = 'trauma-flex'>
                 <h2>TRAUMA</h2>
                 <div id="trauma-tracker">
-                    <button class="pennant-button inactive" id="trauma-1" onclick="buttonUpdate('intPlayerTrauma',traumaArray,1)"></button>
-                    <button class="pennant-button inactive" id="trauma-2" onclick="buttonUpdate('intPlayerTrauma',traumaArray,2)"></button>
-                    <button class="pennant-button inactive" id="trauma-3" onclick="buttonUpdate('intPlayerTrauma',traumaArray,3)"></button>
-                    <button class="pennant-button inactive" id="trauma-4" onclick="buttonUpdate('intPlayerTrauma',traumaArray,4)"></button>
+                    <button class="slant button inactive" id="trauma-1" onclick="buttonUpdate('intPlayerTrauma',traumaArray,1)"></button>
+                    <button class="slant button inactive" id="trauma-2" onclick="buttonUpdate('intPlayerTrauma',traumaArray,2)"></button>
+                    <button class="slant button inactive" id="trauma-3" onclick="buttonUpdate('intPlayerTrauma',traumaArray,3)"></button>
+                    <button class="slant button inactive" id="trauma-4" onclick="buttonUpdate('intPlayerTrauma',traumaArray,4)"></button>
                 </div>
             </div>
         </div>
