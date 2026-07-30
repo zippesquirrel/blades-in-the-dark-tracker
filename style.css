@@ -1,5 +1,12 @@
 /*{"last_published":"2026-07-26 03:31:15 UTC"}*/
 
+:root{
+    --bg-blue: rgb(40, 38, 49);
+    --bg-light-blue: rgb(66, 62, 83);
+    --active-blue: rgb(107, 128, 172);
+    --hover-blue: rgb(87, 99, 121);
+}
+
 #player-info{
     justify-content: left;
 }
@@ -157,17 +164,26 @@ Retrieved 2026-07-28, License - CC BY-SA 3.0
     width:5vw;
     clip-path: polygon(0 0,100% 0,100% calc(100% - var(--p)),0 100%);
 } */
-#clock-div{
+#clock-grid{
+    align-items: center;
+    justify-content: center;
     display: grid;
     grid-template-columns: auto auto auto;
 }
 .clock-parent-div{
-    height:150px;
-    width:250px;
+    height:fit-content;
+    width:280px;
     position: relative;
-    margin: 150px;
-    background-color: gray;
+    margin: 20px;
+    background-color: var(--bg-blue);
+    padding:20px
 }
+
+.clock-heading{
+    margin:10px;
+    margin-bottom:40px;
+}
+
 
 .clock-button-div{
     display: flex;
@@ -177,7 +193,8 @@ Retrieved 2026-07-28, License - CC BY-SA 3.0
     position:relative;
     height:100%;
     width:30%;
-    margin-left:auto
+    margin-left:auto;
+    gap:5px;
 }
 
 .clock-button{
@@ -186,7 +203,29 @@ Retrieved 2026-07-28, License - CC BY-SA 3.0
     font-size:100%;
     text-align: center;
     vertical-align: center;
-    background-color:gray
+    background-color:var(--bg-light-blue);
+    border-style: none;
+    transition: 0.1s;
+}
+
+
+.clock-button:active{
+    background-color: var(--active-blue);
+    width:110%;
+}
+.clock-button:hover{
+    background-color: var(--hover-blue);
+}
+
+.clock-button[id*=-rm]{
+    transition: background-color 0.3s;
+}
+.clock-button:hover[id*=-rm]{
+    background-color: maroon;
+}
+
+.clock-button:active[id*=-rm]{
+    background-color: red;
 }
 
 #healing-clock{
@@ -208,7 +247,7 @@ Retrieved 2026-07-28, License - CC BY-SA 3.0
     min-height:200px;
     font-family:oso-serif-variable;
     font-size:70%;
-    background-color: rgb(40, 38, 49);
+    background-color: var(--bg-blue);
     border-style: none;
     padding:10px;
     color:white;
@@ -229,6 +268,7 @@ Retrieved 2026-07-30, License - CC BY-SA 3.0
   height: 150px;
   border-top-left-radius: 50%;
   border-bottom-left-radius:50%;
+  transition: background-color 0.3s;
 }
 
 @media (max-width: 800px){

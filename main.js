@@ -55,9 +55,8 @@ function createClock(parentId,id,size){
     var div = 360 / size;
     var radius = 5;
     var parentdiv = clockDiv
-    var offsetToParentCenter = 0;//parseInt(parentdiv.offsetWidth / 2); //assumes parent is square
-    var offsetToChildCenter = 0;
-    var totalOffset = offsetToParentCenter - offsetToChildCenter;
+    var xOffset = 20
+    var yOffset = 80
     for (var i = 1; i <= size; ++i) {
         var childdiv = document.createElement('div');
         childdiv.classList.add("pie","inactive")
@@ -65,8 +64,8 @@ function createClock(parentId,id,size){
         var x = Math.sin(((div * i)-div) * (Math.PI / 180)+(Math.PI/size)) * radius;
         var y = -Math.cos(((div * i)-div) * (Math.PI / 180)+(Math.PI/size)) * radius;
         childdiv.id = `${id}-${i}`
-        childdiv.style.top = (y + totalOffset).toString() + "px";
-        childdiv.style.left = (x + totalOffset).toString() + "px";
+        childdiv.style.top = (y + yOffset).toString() + "px";
+        childdiv.style.left = (x + xOffset).toString() + "px";
         childdiv.style.rotate = (-Math.atan2(x,y)*(180/Math.PI)-90).toString()+"deg";
         childdiv.style.clipPath = `polygon(0% ${100*(0.5-sliceWidth/2)}%, 0% ${100*(0.5+sliceWidth/2)}%, 50% 50%)`;
         parentdiv.appendChild(childdiv);
@@ -74,7 +73,11 @@ function createClock(parentId,id,size){
     
     const buttonDiv = document.createElement("div");
     buttonDiv.classList.add("clock-button-div");
-    
+
+    const heading = document.createElement("h2")
+    heading.classList.add("clock-heading")
+    heading.innerText=id
+    clockDiv.appendChild(heading)
     clockDiv.appendChild(buttonDiv)
     clockDiv.id = id
     clockDiv.classList.add("clock-parent-div")
@@ -89,12 +92,16 @@ function createClock(parentId,id,size){
     const buttonRm = document.createElement("button");
     buttonRm.id=id+"-rm"
     
+    // create buttons for increase, decrease, delete
+
     buttonUp.classList.add("button-up","clock-button");
     buttonUp.textContent="⬆️";
     buttonUp.onclick = ()=>{
         localInt = parseInt(localStorage.getItem("int"+id));
         if (localInt<size){
             buttonUpdate('int'+id,window[id+"Array"],localInt+1)
+        } else{
+            buttonUpdate('int'+id,window[id+"Array"],0)
         }
     }
     buttonDiv.appendChild(buttonUp);
@@ -104,13 +111,15 @@ function createClock(parentId,id,size){
         localInt = parseInt(localStorage.getItem("int"+id));
         if (localInt>0){
             buttonUpdate('int'+id,window[id+"Array"],localInt-1)
+        } else {
+            buttonUpdate('int'+id,window[id+"Array"],size)
         }
     }
     buttonDiv.appendChild(buttonDn);
     buttonRm.classList.add("button-rm","clock-button");
     buttonRm.textContent="💀";
     buttonRm.onclick = ()=>{
-        let proceed = confirm("are you sure?")
+        let proceed = confirm(`Are you sure you want to delete ${id}?`)
         if (proceed){
             localStorage.removeItem('int'+id)
             clockDiv.replaceChildren()
@@ -203,6 +212,6 @@ buttonDisplay(coinArray,localStorage.getItem("intPlayerCoin"));
 buttonDisplay(stressArray,localStorage.getItem("intPlayerStress"));
 buttonDisplay(traumaArray,localStorage.getItem("intPlayerTrauma"));
 
-createClock("clock-div","bob",4,)
-createClock("clock-div","tom",6,)
-createClock("clock-div","joe",8,)
+createClock("clock-grid","bob",4,)
+createClock("clock-grid","tom",6,)
+createClock("clock-grid","joe",8,)
