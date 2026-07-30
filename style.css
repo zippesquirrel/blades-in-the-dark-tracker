@@ -157,7 +157,10 @@ Retrieved 2026-07-28, License - CC BY-SA 3.0
     width:5vw;
     clip-path: polygon(0 0,100% 0,100% calc(100% - var(--p)),0 100%);
 } */
-
+#clock-div{
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
 .clock-parent-div{
     height:150px;
     width:250px;
@@ -221,7 +224,7 @@ Posted by joelmdev, modified by community. See post 'Timeline' for change histor
 Retrieved 2026-07-30, License - CC BY-SA 3.0
 */
 
-.div2 {
+.pie {
   width: 150px;
   height: 150px;
   border-top-left-radius: 50%;
