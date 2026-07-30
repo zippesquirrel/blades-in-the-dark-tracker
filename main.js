@@ -1,4 +1,3 @@
-const sliceAngle = [1,0.57735,0.414213]
 
 const intKeys = ["intPlayerCoin","intPlayerStress","intPlayerTrauma"];
 for (i = 0; i< intKeys.length;i++){
@@ -28,10 +27,6 @@ function createClock(parentId,id,size){
         console.log(`Clock size ${size} is not a number!`);
         return;
     };
-    if (size%2!==0||size<4||8<size){
-        console.log("Clock size is not 4,6 or 8")
-        return;
-    };
     if (document.getElementById(id)!==null){
         console.log("An element with that id already exists!")
         return;
@@ -49,7 +44,7 @@ function createClock(parentId,id,size){
     // Source - https://stackoverflow.com/a/17251714
     // Posted by joelmdev, modified by community. See post 'Timeline' for change history
     // Retrieved 2026-07-30, License - CC BY-SA 3.0
-    const sliceWidth = sliceAngle[(size-4)/2]
+    const sliceWidth = Math.tan(Math.PI/size)
 
     // pie slices
     var div = 360 / size;
@@ -110,29 +105,26 @@ function createClock(parentId,id,size){
     buttonDn.onclick = ()=>{
         localInt = parseInt(localStorage.getItem("int"+id));
         if (localInt>0){
-            buttonUpdate('int'+id,window[id+"Array"],localInt-1)
+            buttonUpdate('int'+id,window[id+"Array"],localInt-1);
         } else {
-            buttonUpdate('int'+id,window[id+"Array"],size)
-        }
-    }
+            buttonUpdate('int'+id,window[id+"Array"],size);
+        };
+    };
     buttonDiv.appendChild(buttonDn);
     buttonRm.classList.add("button-rm","clock-button");
     buttonRm.textContent="💀";
     buttonRm.onclick = ()=>{
-        let proceed = confirm(`Are you sure you want to delete ${id}?`)
+        let proceed = confirm(`Are you sure you want to delete ${id}?`);
         if (proceed){
-            localStorage.removeItem('int'+id)
-            clockDiv.replaceChildren()
-            clockDiv.remove()
-        }
-    }
+            localStorage.removeItem('int'+id);
+            clockDiv.replaceChildren();
+            clockDiv.remove();
+        };
+    };
     buttonDiv.appendChild(buttonRm);
 
     buttonDisplay(window[id+"Array"],localInt)
 };
-
-
-
 
 function createObjectArray(id,count){
     let objectArray = new Array;
@@ -148,12 +140,11 @@ function buttonDisplay(objectArray,int){
             objectArray[i].classList.replace('inactive','active')
         };
     };
-
     for (i=int;i<=(objectArray.length-1);i++){
-        objectArray[i].classList.replace('active','inactive')
+        objectArray[i].classList.replace('active','inactive');
     };
-}
-;
+};
+
 function buttonUpdate(key,objectArray, index){
 
     let storedInt = localStorage.getItem(key);
@@ -196,12 +187,6 @@ for (let i = 0; i < localStorage.length; i++){
         document.getElementById(`${activeKey}-input`).value = localStorage.getItem(activeKey);
     };
 };
-
-
-
-
-
-
 
 //coin intial position
 const coinArray = createObjectArray("coin",4);
