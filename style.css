@@ -40,12 +40,12 @@ Retrieved 2026-07-28, License - CC BY-SA 3.0
 #radio-info{
     display:flex;
     
-    flex-direction: row;
-    justify-content: center;
+    flex-direction: column;
     margin-top:20px;
 }
 
 .radio-flex{
+    justify-content: center;
     display:flex;
     flex-wrap: wrap;
     flex-direction: row;
@@ -53,11 +53,6 @@ Retrieved 2026-07-28, License - CC BY-SA 3.0
     margin-left:20px;
     margin-right: 20px;
 }
-
-#heritage-flex{
-    justify-content: flex-end;
-}
-
 .radiowrapper{
     min-width: 0;
     height:100px;
@@ -69,6 +64,7 @@ Retrieved 2026-07-28, License - CC BY-SA 3.0
 }
 
 .radiowrapper label{
+    cursor:pointer;
     font-family:oso-serif-variable;
     font-weight: 100;
     background-color: rgb(46, 46, 46);
@@ -149,7 +145,7 @@ Retrieved 2026-07-28, License - CC BY-SA 3.0
 }
 
 .slant{
-
+    margin:5px;
     height:120px;
     width:60px;
     transform: skewY(-20deg);
@@ -161,6 +157,34 @@ Retrieved 2026-07-28, License - CC BY-SA 3.0
     width:5vw;
     clip-path: polygon(0 0,100% 0,100% calc(100% - var(--p)),0 100%);
 } */
+
+.clock-parent-div{
+    height:150px;
+    width:250px;
+    position: relative;
+    margin: 150px;
+    background-color: gray;
+}
+
+.clock-button-div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position:relative;
+    height:100%;
+    width:30%;
+    margin-left:auto
+}
+
+.clock-button{
+    height:30%;
+    width:100%;
+    font-size:100%;
+    text-align: center;
+    vertical-align: center;
+    background-color:gray
+}
 
 #healing-clock{
     width:fit-content;
@@ -175,12 +199,44 @@ Retrieved 2026-07-28, License - CC BY-SA 3.0
     background-color: aqua;
 }
 
+#strPlayerNotes-input{
+    width:40%;
+    resize:vertical;
+    min-height:200px;
+    font-family:oso-serif-variable;
+    font-size:70%;
+    background-color: rgb(40, 38, 49);
+    border-style: none;
+    padding:10px;
+    color:white;
+}
+
+#playerNotes{
+    margin-top:50px;
+}
+
+/*
+Source - https://stackoverflow.com/a/17251714
+Posted by joelmdev, modified by community. See post 'Timeline' for change history
+Retrieved 2026-07-30, License - CC BY-SA 3.0
+*/
+
+.div2 {
+  width: 150px;
+  height: 150px;
+  border-top-left-radius: 50%;
+  border-bottom-left-radius:50%;
+}
+
 @media (max-width: 800px){
     #radio-info{
         flex-direction: column;
         
     }
-    #heritage-flex{
+    .radio-flex{
         justify-content: left;
+    }
+    #strPlayerNotes-input{
+        width:90%;
     }
 }

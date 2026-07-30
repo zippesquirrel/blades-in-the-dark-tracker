@@ -1,8 +1,7 @@
-const intKeys = ["intPlayerCoin","intPlayerStress","intPlayerTrauma"];
+const sliceAngle = [1,0.57735,0.414213]
 
+const intKeys = ["intPlayerCoin","intPlayerStress","intPlayerTrauma"];
 for (i = 0; i< intKeys.length;i++){
-    console.log(intKeys[i]);
-    console.log(i);
     if (localStorage.getItem(intKeys[i])== null){
         store(intKeys[i],0);
     };
@@ -85,6 +84,75 @@ for (let i = 0; i < localStorage.length; i++){
     };
 };
 
+function createClock(parentId,size,id){
+    // initial exception handling
+    if (typeof(size)!=="number"){
+        console.log(`Clock size ${size} is not a number!`);
+        return;
+    };
+    if (size%2!==0||size<4||8<size){
+        console.log("Clock size is not 4,6 or 8")
+        return;
+    };
+    const parent = document.getElementById(parentId)
+    const clockDiv = document.createElement("div")
+    
+    // Source - https://stackoverflow.com/a/17251714
+    // Posted by joelmdev, modified by community. See post 'Timeline' for change history
+    // Retrieved 2026-07-30, License - CC BY-SA 3.0
+    const sliceWidth = sliceAngle[(size-4)/2]
+
+    // pie slices
+    var div = 360 / size;
+    var radius = 5;
+    var parentdiv = clockDiv
+    var offsetToParentCenter = 0;//parseInt(parentdiv.offsetWidth / 2); //assumes parent is square
+    var offsetToChildCenter = 0;
+    var totalOffset = offsetToParentCenter - offsetToChildCenter;
+    for (var i = 1; i <= size; ++i) {
+        var childdiv = document.createElement('div');
+        childdiv.classList.add("div2","inactive")
+        childdiv.style.position = 'absolute';
+        var x = Math.sin((div * i) * (Math.PI / 180)+(Math.PI/size)) * radius;
+        var y = Math.cos((div * i) * (Math.PI / 180)+(Math.PI/size)) * radius;
+        childdiv.id = `${id}-${i}`
+        childdiv.style.top = (y + totalOffset).toString() + "px";
+        childdiv.style.left = (x + totalOffset).toString() + "px";
+        childdiv.style.rotate = (-Math.atan2(x,y)*(180/Math.PI)-90).toString()+"deg";
+        childdiv.style.clipPath = `polygon(0% ${100*(0.5-sliceWidth/2)}%, 0% ${100*(0.5+sliceWidth/2)}%, 50% 50%)`
+        parentdiv.appendChild(childdiv);
+    }
+    
+    const buttonDiv = document.createElement("div")
+    buttonDiv.classList.add("clock-button-div")
+    const buttonUp = document.createElement("button")
+    const buttonDn = document.createElement("button")
+    const buttonRm = document.createElement("button")
+
+    buttonUp.classList.add("button-up","clock-button")
+    buttonUp.textContent="⬆️"
+    buttonUp.oninput = "buttonUpdate('intPlayerTrauma',traumaArray,1)"
+    buttonDiv.appendChild(buttonUp)
+    buttonDn.classList.add("button-dn","clock-button")
+    buttonDn.textContent="⬇️"
+    buttonDiv.appendChild(buttonDn)
+    buttonRm.classList.add("button-rm","clock-button")
+    buttonRm.textContent="💀"
+    buttonDiv.appendChild(buttonRm)
+
+
+    
+
+    clockDiv.appendChild(buttonDiv)
+    clockDiv.id = id
+    clockDiv.classList.add("clock-parent-div")
+    parent.insertAdjacentElement("beforeend",clockDiv)
+};
+
+
+
+
+
 //coin intial position
 const coinArray = createButtonArray("coin",4);
 const stressArray = createButtonArray("stress",9);
@@ -94,4 +162,4 @@ buttonDisplay(coinArray,localStorage.getItem("intPlayerCoin"));
 buttonDisplay(stressArray,localStorage.getItem("intPlayerStress"));
 buttonDisplay(traumaArray,localStorage.getItem("intPlayerTrauma"));
 
-
+createClock("clock-div",6,"bob")
