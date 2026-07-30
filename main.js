@@ -27,10 +27,14 @@ function createClock(parentId,id,size){
         console.log(`Clock size ${size} is not a number!`);
         return;
     };
+    if (size<2){
+        alert(`${id} has too small of a size!`)
+        return;
+    };
     if (document.getElementById(id)!==null){
         console.log("An element with that id already exists!")
         return;
-    }
+    };
 
 
     if (localStorage.getItem("int"+id)==null){
@@ -197,6 +201,6 @@ buttonDisplay(coinArray,localStorage.getItem("intPlayerCoin"));
 buttonDisplay(stressArray,localStorage.getItem("intPlayerStress"));
 buttonDisplay(traumaArray,localStorage.getItem("intPlayerTrauma"));
 
-createClock("clock-grid","bob",4,)
-createClock("clock-grid","tom",6,)
-createClock("clock-grid","joe",8,)
+createClock("clock-grid","bob",2)
+createClock("clock-grid","tom",6)
+createClock("clock-grid","joe",8)
