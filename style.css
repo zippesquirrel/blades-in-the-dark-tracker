@@ -166,28 +166,34 @@ Retrieved 2026-07-28, License - CC BY-SA 3.0
 } */
 #clock-grid{
     align-items: center;
-    justify-content: center;
-    display: grid;
-    grid-template-columns: auto auto auto;
+    justify-content: left;
+    display: flex;
+    width:70%;
+    flex-wrap: wrap;
 }
 .clock-parent-div{
     height:fit-content;
-    width:280px;
+    width:fit-content;
     position: relative;
     margin: 20px;
     background-color: var(--bg-blue);
-    padding:20px
+    padding:20px;
+    max-width: 100%;
+
 }
 
 .clock-heading{
     margin:10px;
+    min-width: 220px;
     margin-bottom:40px;
+    hyphens: auto;
+    overflow-wrap: anywhere;
 }
 
 
 .clock-button-div{
     display: flex;
-    align-items: center;
+    align-items: end;
     justify-content: center;
     flex-direction: column;
     position:relative;
@@ -198,6 +204,7 @@ Retrieved 2026-07-28, License - CC BY-SA 3.0
 }
 
 .clock-button{
+    color:white;
     height:30%;
     width:100%;
     font-size:100%;
@@ -228,17 +235,38 @@ Retrieved 2026-07-28, License - CC BY-SA 3.0
     background-color: red;
 }
 
-#healing-clock{
-    width:fit-content;
-    display: grid;
-    grid-template-columns: auto auto;
-    clip-path: circle(5vw at center);
+#create-clock-flex{
+    display: flex;
+    height:100px;
+    column-gap: 10px;
+    flex-direction: row;
+}
+#create-custom-clock-flex{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    padding:5px;
+    background-color: var(--bg-blue);
+
+}
+#create-custom-clock-adjust-flex{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+#create-clock-heading{
+    margin-top: 20px;
+    min-width: fit-content;
 }
 
-.healing-button{
-    border-radius: 0;
-    border-color:aqua;
-    background-color: aqua;
+.create-clock{
+    min-width: 100px;
+    height:auto
+}
+
+.create-custom-clock{
+    height:100%;
+    min-width: 80px;
 }
 
 #strPlayerNotes-input{

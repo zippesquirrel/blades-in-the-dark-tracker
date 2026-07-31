@@ -24,23 +24,23 @@ function createClock(parentId,id,size){
 
     // initial exception handling
     if (typeof(size)!=="number"){
-        console.log(`Clock size ${size} is not a number!`);
+        console.log(`Clock size ${size} for id ${id} is not a number!`);
         return;
     };
     if (size<2){
         alert(`${id} has too small of a size!`)
         return;
     };
-    if (document.getElementById(id)!==null){
+    if (document.getElementById("clock-"+id)!==null){
         console.log("An element with that id already exists!")
         return;
     };
 
 
-    if (localStorage.getItem("int"+id)==null){
-        store("int"+id,0)
+    if (localStorage.getItem("intClock"+size+"-"+id)==null){
+        store("intClock"+size+"-"+id,0)
     }
-    let localInt = parseInt(localStorage.getItem("int"+id));
+    let localInt = parseInt(localStorage.getItem("intClock"+size+"-"+id));
 
     const parent = document.getElementById(parentId)
     const clockDiv = document.createElement("div")
@@ -55,15 +55,15 @@ function createClock(parentId,id,size){
     var radius = 5;
     var parentdiv = clockDiv
     var xOffset = 20
-    var yOffset = 80
+    var yOffset = 20
     for (var i = 1; i <= size; ++i) {
         var childdiv = document.createElement('div');
         childdiv.classList.add("pie","inactive")
         childdiv.style.position = 'absolute';
         var x = Math.sin(((div * i)-div) * (Math.PI / 180)+(Math.PI/size)) * radius;
         var y = -Math.cos(((div * i)-div) * (Math.PI / 180)+(Math.PI/size)) * radius;
-        childdiv.id = `${id}-${i}`
-        childdiv.style.top = (y + yOffset).toString() + "px";
+        childdiv.id = `clock-${id}-${i}`
+        childdiv.style.bottom = (-y + yOffset).toString() + "px";
         childdiv.style.left = (x + xOffset).toString() + "px";
         childdiv.style.rotate = (-Math.atan2(x,y)*(180/Math.PI)-90).toString()+"deg";
         childdiv.style.clipPath = `polygon(0% ${100*(0.5-sliceWidth/2)}%, 0% ${100*(0.5+sliceWidth/2)}%, 50% 50%)`;
@@ -78,40 +78,40 @@ function createClock(parentId,id,size){
     heading.innerText=id
     clockDiv.appendChild(heading)
     clockDiv.appendChild(buttonDiv)
-    clockDiv.id = id
+    clockDiv.id = "clock-"+id
     clockDiv.classList.add("clock-parent-div")
     parent.insertAdjacentElement("beforeend",clockDiv)
     
-    window[id+"Array"] = createObjectArray(id,size)
+    window[id+"ClockArray"] = createObjectArray("clock-"+id,size)
 
     const buttonUp = document.createElement("button");
-    buttonUp.id=id+"-up"
+    buttonUp.id="clock-"+id+"-up"
     const buttonDn = document.createElement("button");
-    buttonDn.id=id+"-dn"
+    buttonDn.id="clock-"+id+"-dn"
     const buttonRm = document.createElement("button");
-    buttonRm.id=id+"-rm"
+    buttonRm.id="clock-"+id+"-rm"
     
     // create buttons for increase, decrease, delete
 
     buttonUp.classList.add("button-up","clock-button");
     buttonUp.textContent="⬆️";
     buttonUp.onclick = ()=>{
-        localInt = parseInt(localStorage.getItem("int"+id));
+        localInt = parseInt(localStorage.getItem("intClock"+size+"-"+id));
         if (localInt<size){
-            buttonUpdate('int'+id,window[id+"Array"],localInt+1)
+            buttonUpdate('intClock'+size+"-"+id,window[id+"ClockArray"],localInt+1)
         } else{
-            buttonUpdate('int'+id,window[id+"Array"],0)
+            buttonUpdate('intClock'+size+"-"+id,window[id+"ClockArray"],0)
         }
     }
     buttonDiv.appendChild(buttonUp);
     buttonDn.classList.add("button-dn","clock-button");
     buttonDn.textContent="⬇️";
     buttonDn.onclick = ()=>{
-        localInt = parseInt(localStorage.getItem("int"+id));
+        localInt = parseInt(localStorage.getItem("intClock"+size+"-"+id));
         if (localInt>0){
-            buttonUpdate('int'+id,window[id+"Array"],localInt-1);
+            buttonUpdate('intClock'+size+"-"+id,window[id+"ClockArray"],localInt-1);
         } else {
-            buttonUpdate('int'+id,window[id+"Array"],size);
+            buttonUpdate('intClock'+size+"-"+id,window[id+"ClockArray"],size);
         };
     };
     buttonDiv.appendChild(buttonDn);
@@ -120,14 +120,58 @@ function createClock(parentId,id,size){
     buttonRm.onclick = ()=>{
         let proceed = confirm(`Are you sure you want to delete ${id}?`);
         if (proceed){
-            localStorage.removeItem('int'+id);
+            localStorage.removeItem('intClock'+size+"-"+id);
             clockDiv.replaceChildren();
             clockDiv.remove();
         };
     };
     buttonDiv.appendChild(buttonRm);
 
-    buttonDisplay(window[id+"Array"],localInt)
+    buttonDisplay(window[id+"ClockArray"],localInt);
+};
+
+function userCreateClock(size){
+    let id = prompt("Clock name:");
+    // user presses escape/cancel
+    if (id==null){return};
+    if (id==""){
+        // if no name given, name it 'clock n' where n is the number of existing clocks plus 1
+        id = "Clock "+(document.getElementsByClassName("clock-parent-div").length+1).toString();
+    };
+    createClock("clock-grid",id,size);
+};
+
+function updateCustomClock(val){
+    const sizeElement = document.getElementById("custom-clock-size");
+    const sizeInt = parseInt(sizeElement.innerText);
+    if (sizeInt>2 || val >= 0){
+        sizeElement.innerText=sizeInt+val;
+    };
+};
+
+function initiateClocks(){
+    const keyArray = Object.keys(localStorage);
+    let clockArray = new Array;
+    for (i in keyArray){
+        if (keyArray[i].slice(0,8)=="intClock"){
+            clockArray.push(keyArray[i]);
+        };
+    };
+
+    for (i in clockArray){
+        const targetClock = clockArray[i];
+        const size = parseInt(targetClock.match(/(?!=clock)\d+/gm));
+
+        
+        const remove = targetClock.slice(3,9);
+        const targetClockId=targetClock.slice(3).replace(remove,"clock");
+        const targetClockName = targetClockId.match(/(?<=-).*/gm);
+  
+        if (document.getElementById(targetClockId)==null){
+            console.log("Creating clock "+targetClockName+" with size "+size);
+            createClock("clock-grid",targetClockName,size);
+        };
+    };
 };
 
 function createObjectArray(id,count){
@@ -141,7 +185,7 @@ function createObjectArray(id,count){
 function buttonDisplay(objectArray,int){
     if (int!== 0){
         for (i=0;i<int;i++){
-            objectArray[i].classList.replace('inactive','active')
+            objectArray[i].classList.replace('inactive','active');
         };
     };
     for (i=int;i<=(objectArray.length-1);i++){
@@ -201,6 +245,4 @@ buttonDisplay(coinArray,localStorage.getItem("intPlayerCoin"));
 buttonDisplay(stressArray,localStorage.getItem("intPlayerStress"));
 buttonDisplay(traumaArray,localStorage.getItem("intPlayerTrauma"));
 
-createClock("clock-grid","bob",2)
-createClock("clock-grid","tom",6)
-createClock("clock-grid","joe",8)
+initiateClocks()

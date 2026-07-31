@@ -120,8 +120,24 @@
                 </div>
             </div>
         </div>
-        <div id="clock-grid">
+        <div style="display:flex; flex-direction: column; align-items: center;">
+            <h1>CLOCKS</h1>
+            <div id="clock-grid">
 
+            </div>
+            <div id="create-clock-flex">
+                <h3 id="create-clock-heading">Create a clock</h3>
+                <button class = "clock-button create-clock" onclick="userCreateClock(4)">4</button>
+                <button class = "clock-button create-clock" onclick="userCreateClock(6)">6</button>
+                <button class = "clock-button create-clock" onclick="userCreateClock(8)">8</button>
+                <div id = "create-custom-clock-flex">
+                    <div id="create-custom-clock-adjust-flex">
+                        <button class = "clock-button create-custom-clock" onclick="updateCustomClock(1)">+</button>
+                        <button class = "clock-button create-custom-clock" onclick="updateCustomClock(-1)">-</button>
+                    </div>
+                    <button id = "custom-clock-size" class = "clock-button create-custom-clock" onclick="userCreateClock(parseInt(this.innerText))">12</button>
+                </div>
+            </div>
         </div>
         <div id="playerNotes">
             <h2>NOTES</h2>
