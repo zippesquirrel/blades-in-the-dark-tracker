@@ -5,7 +5,9 @@ A handy way to keep track of a player's characters for the wonderful TTRPG Blade
 https://bladesinthedark.com/greetings-scoundrel
 
 ## ✅ Done
-- Using localStorage to sync submitted info after page refresh  
+- Using localStorage to sync submitted info after page refresh
+- keep track of user notes & traits
+- add, remove and modify clocks
 ## ⏰ Planned
 - Track player name, stats, playbook levels, harm  
 - View traits for a chosen player class  
