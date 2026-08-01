@@ -149,8 +149,12 @@ function updateCustomClock(val){
     };
 };
 
-function initiateClocks(){
-    const keyArray = Object.keys(localStorage);
+function updateClocks(){
+    // Source - https://stackoverflow.com/a/9645447
+    // Posted by Ivan Krechetov, modified by community. See post 'Timeline' for change history
+    // Retrieved 2026-07-31, License - CC BY-SA 4.0
+    const removeRegex = /.*?(?=\d)/;
+    const keyArray = Object.keys(localStorage).sort((a, b) => a.replace(removeRegex,"").localeCompare(b.replace(removeRegex,""), 'en', {'sensitivity': 'base'}));
     let clockArray = new Array;
     for (i in keyArray){
         if (keyArray[i].slice(0,8)=="intClock"){
@@ -245,4 +249,4 @@ buttonDisplay(coinArray,localStorage.getItem("intPlayerCoin"));
 buttonDisplay(stressArray,localStorage.getItem("intPlayerStress"));
 buttonDisplay(traumaArray,localStorage.getItem("intPlayerTrauma"));
 
-initiateClocks()
+updateClocks()
