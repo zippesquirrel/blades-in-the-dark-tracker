@@ -116,6 +116,17 @@ Retrieved 2026-07-28, License - CC BY-SA 3.0
         
 }
 
+#flex-info
+{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    gap:50px;
+    justify-self: center;
+    align-self:center;
+    justify-content: center;
+}
+
 .active{
     background-color: red;
 }
@@ -246,6 +257,9 @@ Retrieved 2026-07-28, License - CC BY-SA 3.0
     flex-direction: row;
     gap: 5px;
     padding:5px;
+    border-radius: 10px;
+    border-width: 5px;
+    border-color: var(--bg-blue);
     background-color: var(--bg-blue);
 
 }
@@ -269,27 +283,39 @@ Retrieved 2026-07-28, License - CC BY-SA 3.0
     min-width: 80px;
 }
 
-#strPlayerNotes-input{
-    width:40%;
+.text-area{
+    width:60%;
     resize:vertical;
     min-height:200px;
     font-family:oso-serif-variable;
     font-size:70%;
     background-color: var(--bg-blue);
-    border-style: none;
+    border-width:5px;
+    border-color: var(--bg-blue);
+    border-radius: 10px;
     padding:10px;
     color:white;
 }
 
-#playerNotes{
-    margin-top:50px;
-}
+/* #playerNotes{
+    /* margin-top:50px; */
+/* } 
 
 /*
 Source - https://stackoverflow.com/a/17251714
 Posted by joelmdev, modified by community. See post 'Timeline' for change history
 Retrieved 2026-07-30, License - CC BY-SA 3.0
 */
+
+#playerText{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.text-div{
+    width:50%;
+}
 
 .pie {
   width: 150px;
@@ -304,10 +330,34 @@ Retrieved 2026-07-30, License - CC BY-SA 3.0
         flex-direction: column;
         
     }
+    #create-clock-flex{
+        flex-direction: column;
+        height:fit-content;
+        align-items:center;
+    }
+    .create-clock
+    {
+        margin-bottom:10px;
+        width:140px;
+        height:140px;
+    }
+    #custom-clock-size
+    {
+        height:100px;
+    }
+    #flex-info
+    {   
+        display:flex;
+        flex-direction: column;
+    }
+
     .radio-flex{
         justify-content: left;
     }
-    #strPlayerNotes-input{
+    .text-area{
         width:90%;
+    }
+    #playerText{
+        flex-direction: column;
     }
 }

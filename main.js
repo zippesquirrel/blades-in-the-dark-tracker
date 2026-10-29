@@ -1,4 +1,3 @@
-
 const intKeys = ["intPlayerCoin","intPlayerStress","intPlayerTrauma"];
 for (i = 0; i< intKeys.length;i++){
     if (localStorage.getItem(intKeys[i])== null){
@@ -19,6 +18,11 @@ function store(key,e) {
         localStorage.setItem(key, e);
     };
 };
+
+function clearStorage() {
+    localStorage.clear();
+    window.location.reload();
+}
 
 function createClock(parentId,id,size){
 

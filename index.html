@@ -8,19 +8,33 @@
         <link rel="icon" href="favicon.ico">
     </head>
     <body>
-        <h1>BLADES <span style="font-size:70%":>IN THE</span> DARK</h1>
+        <h1 style="font-size:90%; margin-bottom:0px;margin-top:3%">Zippesquirrel's</h1>
+        <h1 style="margin:1px">BLADES <span style="font-size:70%;":>IN THE</span> DARK</h1>
+        <h1 style="font-size:90%; margin-top:0px">Tracker</h1>
         
         <div id="player-info">
-            <div id="string-info">
-                <label>NAME</label>
-                <input class="text-input" id="strPlayerName-input" oninput="store('strPlayerName',this)"><br>
-                <label>ALIAS</label>
-                <input class="text-input" id="strPlayerAlias-input" oninput="store('strPlayerAlias',this)"><br>
-                <label>CREW</label>
-                <input class="text-input" id="strPlayerCrew-input" oninput="store('strPlayerCrew',this)"><br>
-                <label>LOOK</label>
-                <input class="text-input" id="strPlayerLook-input" oninput="store('strPlayerLook',this)"><br>
+            <div id="flex-info">
+                <div id="string-info">
+                    <label>NAME</label>
+                    <input class="text-input" id="strPlayerName-input" oninput="store('strPlayerName',this)"><br>
+                    <label>ALIAS</label>
+                    <input class="text-input" id="strPlayerAlias-input" oninput="store('strPlayerAlias',this)"><br>
+                    <label>CREW</label>
+                    <input class="text-input" id="strPlayerCrew-input" oninput="store('strPlayerCrew',this)"><br>
+                    <label>LOOK</label>
+                    <input class="text-input" id="strPlayerLook-input" oninput="store('strPlayerLook',this)"><br>
+                </div>
+                <div id = 'coin-flex'>
+                    <h2>COIN</h2>
+                    <div id="coin-tracker">
+                        <button class="square button inactive" id="coin-1" onclick="buttonUpdate('intPlayerCoin',coinArray,1)"></button>
+                        <button class="square button inactive" id="coin-2" onclick="buttonUpdate('intPlayerCoin',coinArray,2)"></button>
+                        <button class="square button inactive" id="coin-3" onclick="buttonUpdate('intPlayerCoin',coinArray,3)"></button>
+                        <button class="square button inactive" id="coin-4" onclick="buttonUpdate('intPlayerCoin',coinArray,4)"></button>
+                    </div>           
+                </div>
             </div>
+
             <div id="radio-info">
                 <div class="radio-flex" id="heritage-flex">
                     <p>Heritage</p>
@@ -87,15 +101,7 @@
                 </div>
             </div>
         </div>
-        <div id = 'coin-flex'>
-            <h2>COIN</h2>
-            <div id="coin-tracker">
-                <button class="square button inactive" id="coin-1" onclick="buttonUpdate('intPlayerCoin',coinArray,1)"></button>
-                <button class="square button inactive" id="coin-2" onclick="buttonUpdate('intPlayerCoin',coinArray,2)"></button>
-                <button class="square button inactive" id="coin-3" onclick="buttonUpdate('intPlayerCoin',coinArray,3)"></button>
-                <button class="square button inactive" id="coin-4" onclick="buttonUpdate('intPlayerCoin',coinArray,4)"></button>
-            </div>           
-        </div>
+
         <div id = "trauma-stress">
             <div id = 'stress-flex'>
                 <h2>STRESS</h2>
@@ -128,22 +134,29 @@
             </div>
             <div id="create-clock-flex">
                 <h3 id="create-clock-heading">Create a clock</h3>
-                <button class = "clock-button create-clock" onclick="userCreateClock(4)">4</button>
-                <button class = "clock-button create-clock" onclick="userCreateClock(6)">6</button>
-                <button class = "clock-button create-clock" onclick="userCreateClock(8)">8</button>
+                <button class = "button clock-button create-clock" onclick="userCreateClock(4)">4</button>
+                <button class = "button clock-button create-clock" onclick="userCreateClock(6)">6</button>
+                <button class = "button clock-button create-clock" onclick="userCreateClock(8)">8</button>
                 <div id = "create-custom-clock-flex">
                     <div id="create-custom-clock-adjust-flex">
-                        <button class = "clock-button create-custom-clock" onclick="updateCustomClock(1)">+</button>
-                        <button class = "clock-button create-custom-clock" onclick="updateCustomClock(-1)">-</button>
+                        <button class = "button clock-button create-custom-clock" onclick="updateCustomClock(1)">+</button>
+                        <button class = "button clock-button create-custom-clock" onclick="updateCustomClock(-1)">-</button>
                     </div>
-                    <button id = "custom-clock-size" class = "clock-button create-custom-clock" onclick="userCreateClock(parseInt(this.innerText))">12</button>
+                    <button id = "custom-clock-size" class = "button clock-button create-custom-clock" onclick="userCreateClock(parseInt(this.innerText))">12</button>
                 </div>
             </div>
         </div>
-        <div id="playerNotes">
-            <h2>NOTES</h2>
-            <textarea id="strPlayerNotes-input" oninput="store('strPlayerNotes',this)"></textarea>
+        <div id="playerText">
+            <div class = 'text-div' id="playerNotes">
+                <h2>NOTES</h2>
+                <textarea class = "text-area" id="strPlayerNotes-input" oninput="store('strPlayerNotes',this)"></textarea>
+            </div>
+            <div class = 'text-div' id="playerItems">
+                <h2>ITEMS</h2>
+                <textarea class = "text-area" id="strPlayerItems-input" oninput="store('strPlayerItems',this)"></textarea>
+            </div>
         </div>
+        <button style="margin-top:5%;max-width:fit-content;padding:20px" class="button clock-button " onclick="clearStorage()">Erase all data</button>
         <!-- <div id = 'healing-clock'>
             <button class="healing-button square-button inactive" id="heal-1" onclick="buttonUpdate('intPlayerHeal',healArray,1)"></button>
             <button class="healing-button square-button inactive" id="heal-2" onclick="buttonUpdate('intPlayerHeal',healArray,2)"></button>
